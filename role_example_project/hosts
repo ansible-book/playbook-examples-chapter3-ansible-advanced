@@ -1,0 +1,5 @@
+[web]
+vm-rhel7-1
+
+[db]
+vm-rhel7-2

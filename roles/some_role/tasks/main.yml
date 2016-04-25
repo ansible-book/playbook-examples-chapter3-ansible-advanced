@@ -1,0 +1,3 @@
+---
+- name: some role
+  debug: msg="Im some role"

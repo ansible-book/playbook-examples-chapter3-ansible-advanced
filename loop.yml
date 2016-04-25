@@ -1,0 +1,10 @@
+---
+- hosts: web
+  user: root
+  tasks:
+
+    - name: add several users
+      user: name={{ item }} state=present
+      with_items:
+         - testuser1
+         - testuser2

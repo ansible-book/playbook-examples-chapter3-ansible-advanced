@@ -1,0 +1,8 @@
+---
+  - hosts: all
+    user: root
+    tasks:
+      - name: copy test1
+        copy: src=/tmp/test1.txt dest=/test/test1.txt
+      - name: copy test2
+        copy: src=/tmp/test2.txt dest=/test/test2.txt

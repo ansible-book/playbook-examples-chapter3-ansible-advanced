@@ -1,0 +1,12 @@
+---
+- hosts: lb
+  user: root
+  vars:
+    somelist: ["testuser1", "testuser2"]
+
+  tasks:
+    - name: add several users
+      user: name={{ item.name }} state=present groups={{ item.groups }}
+      with_items:
+        - { name: 'testusera', groups: 'wheel' }
+        - { name: 'testuserb', groups: 'root' }

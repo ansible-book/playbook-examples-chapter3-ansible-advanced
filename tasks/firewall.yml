@@ -1,0 +1,5 @@
+---
+# possibly saved as tasks/foo.yml
+
+  - name: insert firewalld rule for httpd
+    firewalld: port={{ port }}/tcp permanent=true state=enabled immediate=yes

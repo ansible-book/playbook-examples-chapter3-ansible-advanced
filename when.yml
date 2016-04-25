@@ -1,0 +1,13 @@
+---
+- hosts: localhost
+
+  tasks:
+    - command: /bin/false
+      register: result
+      ignore_errors: True
+    - command: /bin/echo "true"
+      when: result|failed
+    - command: /bin/echo "success"
+      when: result|success
+    - command: /bin/echo "skipped"
+      when: result|skipped

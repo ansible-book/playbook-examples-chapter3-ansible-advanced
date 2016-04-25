@@ -1,0 +1,16 @@
+---
+- hosts: web
+  vars:
+    http_port: 80
+    max_clients: 200
+
+  tasks:
+
+     - shell: ls
+       register: result
+       ignore_errors: True
+
+     - shell: echo "{{ result.stdout }}"
+       when: result.rc == 5
+
+     - debug: msg="{{ result.stdout }}"

@@ -1,0 +1,12 @@
+---
+  # execute with ansible-playbook ssh-addkey.yml --ask-pass
+- hosts: all
+  gather_facts: no
+  user: root
+
+  tasks:
+
+  - name: install ssh key
+    authorized_key: user=root
+                    key="{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+                    state=present

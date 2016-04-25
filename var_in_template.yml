@@ -1,0 +1,26 @@
+---
+- hosts: web
+  vars:
+    http_port: 80
+    defined_name: "Hello My name is Jingjng"
+  remote_user: root
+  tasks:
+  - name: ensure apache is at the latest version
+    yum: pkg=httpd state=latest
+
+  - name: Write the configuration file
+    template: src=templates/httpd.conf.j2 dest=/etc/httpd/conf/httpd.conf
+    notify:
+    - restart apache
+
+  - name: Write the default index.html file
+    template: src=templates/index2.html.j2 dest=/var/www/html/index.html
+
+  - name: ensure apache is running
+    service: name=httpd state=started
+  - name: insert firewalld rule for httpd
+    firewalld: port={{ http_port }}/tcp permanent=true state=enabled immediate=yes
+
+  handlers:
+    - name: restart apache
+      service: name=httpd state=restarted

@@ -1,0 +1,17 @@
+---
+# ansible-playbook block.yml --ask-sudo-pass
+- hosts: web
+
+  tasks:
+     - block:
+         - yum: name={{ item }} state=installed
+           with_items:
+             - httpd
+             - memcached
+
+
+         - service: name=httpd state=started enabled=True
+
+       when: ansible_distribution == 'RedHat'
+       become: true
+       become_user: root
