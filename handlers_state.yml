@@ -1,0 +1,20 @@
+---
+- hosts: lb
+  remote_user: root
+  vars:
+      random_number: "{{ 10000 | random }}"
+  tasks:
+  - name: Copy the /etc/hosts to /tmp/hosts
+    copy: src=/etc/hosts dest=/tmp/hosts
+    notify:
+      - call by /tmp/hosts
+  - name: Copy the /etc/hosts to /tmp/hosts.{{ random_number }}
+    copy: src=/etc/hosts dest=/tmp/hosts.{{ random_number }}
+    notify:
+      - call by /tmp/hosts.random_number
+
+  handlers:
+  - name: call by /tmp/hosts
+    debug: msg="call first time"
+  - name: call by /tmp/hosts.random_number
+    debug: msg="call by /tmp/hosts.random_number"

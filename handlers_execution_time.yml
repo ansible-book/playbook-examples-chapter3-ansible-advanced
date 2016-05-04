@@ -1,0 +1,19 @@
+---
+- hosts: lb
+  remote_user: root
+  vars:
+      random_number1: "{{ 10000 | random }}"
+      random_number2: "{{ 10000000000 | random }}"
+  tasks:
+  - name: Copy the /etc/hosts to /tmp/hosts.{{ random_number1 }}
+    copy: src=/etc/hosts dest=/tmp/hosts.{{ random_number1 }}
+    notify:
+      - call in every action
+  - name: Copy the /etc/hosts to /tmp/hosts.{{ random_number2 }}
+    copy: src=/etc/hosts dest=/tmp/hosts.{{ random_number2 }}
+    notify:
+      - call in every action
+
+  handlers:
+  - name: call in every action
+    debug: msg="call in every action, but execute only one time"
