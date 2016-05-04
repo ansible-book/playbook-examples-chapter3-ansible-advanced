@@ -1,0 +1,13 @@
+---
+# This file work properly only if the ansible.cfg contains library = library/ansible-modules-extras/
+# Add the extra_ansible-modules-extar into the library path.
+# Another way is add it to the env $ANSIBLE_LIBRARY, refer to the link
+- hosts: vm-rhel7-1
+  user: root
+
+  tasks:
+    - name: Add repository
+      yum_repository:
+        name: epel
+        description: EPEL YUM repo
+        baseurl: http://download.fedoraproject.org/pub/epel/$releasever/$basearch/
