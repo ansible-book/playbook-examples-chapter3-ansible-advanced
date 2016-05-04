@@ -2,5 +2,5 @@
 - hosts: all
   remote_user: root
   tasks:
-  - name: ensure apache is at the latest version
+  - name: Copy the /etc/hosts
     copy: src=/etc/hosts dest=/etc/hosts
