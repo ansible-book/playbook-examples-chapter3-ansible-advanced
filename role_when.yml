@@ -1,0 +1,9 @@
+---
+
+- hosts: lb
+  user: root
+
+
+  roles:
+    - { role: role_with_var, ex_param: "Hello from ex_param", in_param1: "This is the value from external" }
+    - { role: some_role, when: "ansible_os_family == 'Dibian'" }

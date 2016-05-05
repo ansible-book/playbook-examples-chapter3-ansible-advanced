@@ -2,7 +2,7 @@
 # This file work properly only if the ansible.cfg contains library = library/ansible-modules-extras/
 # Add the extra_ansible-modules-extar into the library path.
 # Another way is add it to the env $ANSIBLE_LIBRARY, refer to the link http://docs.ansible.com/ansible/developing_modules.html#module-paths
-- hosts: vm-rhel7-1
+- hosts: lb
   user: root
 
   tasks:

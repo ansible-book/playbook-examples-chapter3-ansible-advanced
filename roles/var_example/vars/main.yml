@@ -1,0 +1,3 @@
+in_param1: 'Hello internal param1'
+in_param2: 'Hello internal param2'
+in_sys_param: '{{ ansible_machine }}'

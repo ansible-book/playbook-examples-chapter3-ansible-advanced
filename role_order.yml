@@ -1,6 +1,6 @@
 ---
 
-- hosts: vm-rhel7-1
+- hosts: lb
   user: root
 
   pre_tasks:

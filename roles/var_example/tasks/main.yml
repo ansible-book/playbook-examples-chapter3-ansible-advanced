@@ -1,0 +1,9 @@
+---
+- name: echo external var
+  debug: msg="External variable 'ex_param':{{ ex_param }}"
+- name: echo internal param1
+  debug: msg="External variable 'in_param1':{{ in_param1 }}"
+- name: echo external param2
+  debug: msg="internal variable 'in_param2':{{ in_param2 }}"
+- name: echo internal in_sys_param
+  debug: msg="External variable 'in_sys_param':{{ in_sys_param }}"
