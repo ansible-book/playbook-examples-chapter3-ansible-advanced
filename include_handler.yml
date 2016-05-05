@@ -1,0 +1,17 @@
+---
+- hosts: lb
+  user: root
+  gather_facts: no
+  vars:
+      random_number: "{{ 10000 | random }}"
+  tasks:
+  - name: Copy the /etc/hosts to /tmp/hosts.{{ random_number }}
+    copy: src=/etc/hosts dest=/tmp/hosts.{{ random_number }}
+    notify:
+      - restart apache
+
+
+  handlers:
+    - include: handlers/handlers.yml
+    - name: restart apache
+      debug: msg="This is the handler restart apache"

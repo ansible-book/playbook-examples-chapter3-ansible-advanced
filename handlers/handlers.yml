@@ -1,0 +1,4 @@
+---
+
+    - name: restart apache in handlers
+      debug: msg="This is the handler restart apache in the include file"
