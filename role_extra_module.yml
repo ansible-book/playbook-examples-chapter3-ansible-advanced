@@ -1,0 +1,8 @@
+---
+
+- hosts: lb
+  user: root
+
+
+  roles:
+    - role_with_extra_module
