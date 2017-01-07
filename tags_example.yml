@@ -1,0 +1,22 @@
+---
+- hosts: lb
+  vars:
+    http_port: 80
+  remote_user: root
+  tasks:
+
+    - yum: name={{ item }} state=installed
+      with_items:
+         - httpd
+      tags:
+         - packages
+
+    - name: copy httpd.conf
+      template: src=templates/httpd.conf.j2 dest=/etc/httpd/conf/httpd.conf
+      tags:
+         - configuration
+
+    - name: copy index.html
+      template: src=templates/index.html.j2 dest=/var/www/html/index.html
+      tags:
+         - configuration

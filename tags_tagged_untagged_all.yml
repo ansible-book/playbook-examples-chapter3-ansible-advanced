@@ -1,0 +1,12 @@
+---
+- hosts: lb
+  vars:
+    http_port: 80
+  remote_user: root
+  tasks:
+
+    - debug: msg="I am tagged"
+      tags:
+        - tag1
+
+    - debug: msg="I am not tagged"
