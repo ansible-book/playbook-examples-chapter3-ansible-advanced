@@ -1,0 +1,7 @@
+---
+- hosts: all
+
+  tasks:
+
+    - debug: msg="The atomic number of Lithium is {{ lookup('csvfile', 'Li file=loopup_elements.csv delimiter=,') }}"
+    - debug: msg="The atomic mass of Lithium is {{ lookup('csvfile', 'Li file=loopup_elements.csv delimiter=, col=2') }}"
