@@ -1,0 +1,20 @@
+---
+- hosts: lb
+  vars:
+    http_port: 80
+  remote_user: root
+  tasks:
+
+    - debug: msg="Always print this debug message"
+      tags:
+        - always
+
+    - yum: name={{ item }} state=installed
+      with_items:
+         - httpd
+      tags:
+         - packages
+
+    - template: src=templates/httpd.conf.j2 dest=/etc/httpd/conf/httpd.conf
+      tags:
+         - configuration

@@ -1,0 +1,9 @@
+---
+- hosts: all
+  user: root
+  gather_facts: false
+  vars:
+    - http_port: 80
+
+  tasks:
+    - debug: msg="{{ lookup('template', './templates/httpd.conf.j2') }} is a value from evaluation of this template"

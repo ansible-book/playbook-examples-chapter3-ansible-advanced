@@ -1,0 +1,8 @@
+---
+- hosts: all
+  user: root
+
+  tasks:
+    - debug: msg="User in integration is {{ lookup('ini', 'user section=integration file=lookup_example.ini') }}"
+    - debug: msg="User in production  is {{ lookup('ini', 'user section=production  file=lookup_example.ini') }}"
+    - debug: msg="user.name is {{ lookup('ini', 'user.name type=properties file=lookup_example.properties') }}"

@@ -9,6 +9,7 @@
     copy: src=/etc/hosts dest=/tmp/hosts.{{ random_number }}
     notify:
       - restart apache
+      - restart apache in handlers
 
 
   handlers:

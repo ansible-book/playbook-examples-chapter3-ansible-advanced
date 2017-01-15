@@ -1,0 +1,9 @@
+---
+- hosts: all
+  user: root
+  vars:
+     contents: "{{ lookup('file', '/etc/redhat-release') }}"
+
+  tasks:
+
+     - debug: msg="the value of /etc/redhat_release is {{ contents }}"

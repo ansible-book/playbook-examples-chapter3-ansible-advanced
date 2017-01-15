@@ -2,4 +2,6 @@
 - hosts: web
   tasks:
     - debug: msg="only on Red Hat 7, derivatives, and later"
-      when: ansible_os_family == "RedHat" and ansible_lsb.major_release|int >= 6
+      when: ansible_os_family == "RedHat" and ansible_lsb.major_release|int == 7
+    - debug: msg="only on Red Hat 6, derivatives, and later"
+      when: ansible_os_family == "RedHat" and ansible_lsb.major_release|int == 6

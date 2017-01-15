@@ -1,10 +1,12 @@
 ---
-- hosts: web
+- hosts: lb
   vars:
+    port: 3206
     http_port: 80
     max_clients: 200
   remote_user: root
   tasks:
+    - include: tasks/firewall.yml
     - include: tasks/firewall_httpd_default.yml
     - include: tasks/firewall.yml port=3206
     - include: tasks/firewall.yml port="{{ http_port }}"
